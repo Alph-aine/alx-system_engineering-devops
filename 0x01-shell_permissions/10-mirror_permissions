@@ -1,2 +1,2 @@
 #!/bin/bash
-chgrp 777 hello oleh
+chgrp 354 hello oleh
