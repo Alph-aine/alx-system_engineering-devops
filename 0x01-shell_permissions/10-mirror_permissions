@@ -1,2 +1,2 @@
-#!/bin/bash
-chgrp 354 hello oleh
+#!bin/bash
+chmod --reference=olleh hello
