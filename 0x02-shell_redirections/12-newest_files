@@ -1,2 +1,2 @@
 #!/bin/bash
-find  .  -type d -printf "%t - %p\n" | sort -n | tail -10
+find . -mindepth 1 -type d | wc -l
