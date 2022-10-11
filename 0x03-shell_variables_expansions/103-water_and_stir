@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e $(((bestcholwater$WATER)+(bestcholstir$STIR)))
