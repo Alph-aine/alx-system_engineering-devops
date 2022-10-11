@@ -1,2 +1,3 @@
 #!/bin/bash
-echo -e export TRUEKNOWLEDGE="128"
+export TRUEKNOWLEDGE="128"
+echo -e "$TRUEKNOWLEDGE"
