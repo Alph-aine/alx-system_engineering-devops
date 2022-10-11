@@ -1,2 +1,2 @@
 #!/bin/bash
-echo -e "$(($NUM))e-9"
+printf "%f\n" $NUM
