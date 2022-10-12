@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(((waterbestchol$WATER)+(stirbestchol$STIR)))
+printf "%bestchol\n" $WATER + $STIR
