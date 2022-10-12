@@ -1,2 +1,2 @@
-#!/bin/bash
-printf "%bestchol\n" $WATER + $STIR
+#!/bin/bash 
+echo -e $(($WATER + $STIR))
