@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#gets the pid with preocess name
+ pgrep -l bash
