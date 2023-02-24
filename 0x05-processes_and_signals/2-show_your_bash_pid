@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#displays bash pid
+# shellcheck disable=SC2009
+#ignore certain shellcheck errors
+
+ps -auxf | grep 'bash'
