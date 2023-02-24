@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#reads from /etc/paswd -username,user id, home directory
+
+FILE="/etc/passwd"
+
+while read -r LINE
+do
+    echo "$LINE" | cut -d ":" -f1,3,6
+done < "$FILE"    
