@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 #prints indefinitely and diplays 'I am invincible' when a SIGTERM signal is
 #received
+trap 'echo "I am invincible!!!"' SIGTERM
 
-i=1
-while [ $i -gt 0 ]
+
+while true 
 do
     echo "To infinity and beyond"
-    trap 'echo "I am invincible!!!"' SIGTERM
     sleep 2
-    ((i++))
 done
