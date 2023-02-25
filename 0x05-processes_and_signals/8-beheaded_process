@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#forces a kill
+
+kill -9 "(pgrep '7-highlander')"
