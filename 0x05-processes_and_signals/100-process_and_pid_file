@@ -8,9 +8,9 @@ delete_file()
 	exit
 }
 
-trap 'echo "I hate the kill command"' SIGTERM
+trap 'echo "I hate the kill command"; delete_file' SIGTERM
 trap 'echo "Y U no love me?!"' SIGINT
-trap 'delete_file' SIGQUIT SIGTERM
+trap 'echo "I hate the kill command" ;delete_file' SIGQUIT SIGTERM
 
 echo $$ >> /var/run/myscript.pid
 
