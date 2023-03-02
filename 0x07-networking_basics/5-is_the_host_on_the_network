@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#pings the provided IP address
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 {IP_ADDRESS}"
+    exit 1
+fi
+i=0
+while [ $i -lt 6 ] ; do
+    ping -c 1 "$1"
+    ((i++))
+done
+exit 0
