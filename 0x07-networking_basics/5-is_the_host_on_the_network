@@ -4,8 +4,10 @@
 if [ -z "$1" ]; then
     echo "Usage: $0 {IP_ADDRESS}"
     exit 1
-fi
-else
+
+else; then
     ping -c 5 "$1"
+
+fi
 
 exit 0
