@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#adds new IP address for facebook and localhost in /etc/hosts
+#To be run in dockers,, else revert hostfile
+
+cp /etc/hosts hosts_temp
+sed -i s/127.*$/127.0.0.2\\tlocalhost\\n8.8.8.8\\tfacebook.com/g hosts_temp
+cp -f hosts_temp /etc/hosts
