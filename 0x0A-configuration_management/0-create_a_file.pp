@@ -1,3 +1,4 @@
+# This is a puppet code to create a file with the specified properties
 file {'/tmp/school':
   ensure  => 'file',
   content => 'I love Puppet',
