@@ -1,3 +1,4 @@
+# This code ensures Flask with the specified version is installed
 package { ['python3', 'python3-pip']:
   ensure => installed,
 }
