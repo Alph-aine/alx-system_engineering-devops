@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# script to generate a ssh key pair of 4096 bits and the filename and paraphrase
+# is specified in a single command
+
+# set the file name
+FILE_NAME="school"
+
+# set paraphrase for the private key
+PARAPHRASE="betty"
+
+# command to generate key
+ssh-keygen -t rsa -b 4096 -f "$FILE_NAME" -N "$PARAPHRASE"
