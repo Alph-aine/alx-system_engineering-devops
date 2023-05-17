@@ -12,5 +12,6 @@ else
   username=$3
   key=$4
 
-  scp -i "$key" -r "$file_path" "$username"@"$ip":~
+  scp -o StrictHostKeyChecking=no -i "$key" -r "$file_path" "$username"@"$ip":~
 fi  
+
