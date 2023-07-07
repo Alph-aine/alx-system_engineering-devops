@@ -21,4 +21,4 @@ listen 80\n\
 backend backend_1\n\
         server 172919-web-01 18.204.10.145:80 check\n\
         server 172919-web-02 174.129.55.11:80 check' haproxy.cfg
-
+sudo service haproxy restart
