@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# configures a load balancer that listens on port 80 
+
+# Add HAproxy PPA
+sudo apt update
+sudo apt-get install --no-install-recommends software-properties-common -y
+sudo add-apt-repository ppa:vbernat/haproxy-2.8 -y
+
+# install HAproxy
+sudo apt-get install haproxy=2.8.\* -y
+
+# configuraitons
+sudo sed -i '$aENABLED=1\n' /etc/default/haproxy
+sudo sed -i '$ a\
+\
+listen 80\n\
+        bind *:80\n\
+        default_backend backend_1\n\
+\n\
+backend backend_1\n\
+        balance roundrobin\n\
+        server 172919-web-01 18.204.10.145:80 check\n\
+        server 172919-web-02 174.129.55.11:80 check' haproxy.cfg
+
