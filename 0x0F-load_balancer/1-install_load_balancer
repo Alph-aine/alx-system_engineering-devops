@@ -15,6 +15,7 @@ sudo sed -i '$ a\
 \
 listen 80\n\
         bind *:80\n\
+        mode http\n\
         balance roundrobin\n\
         default_backend backend_1\n\
 \n\
