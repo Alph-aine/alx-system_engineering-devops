@@ -15,10 +15,10 @@ sudo sed -i '$ a\
 \
 listen 80\n\
         bind *:80\n\
+        balance roundrobin\n\
         default_backend backend_1\n\
 \n\
 backend backend_1\n\
-        balance roundrobin\n\
         server 172919-web-01 18.204.10.145:80 check\n\
         server 172919-web-02 174.129.55.11:80 check' haproxy.cfg
 
