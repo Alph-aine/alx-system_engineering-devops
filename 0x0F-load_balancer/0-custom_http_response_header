@@ -13,5 +13,5 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
 sudo sed -i '/^server {/a error_page 404 /404.html;' /etc/nginx/sites-available/default
 
 # add custom header
-sudo sed -i '/^server {/a \\t add_header X-served-by $HOSTNAME;' /etc/nginx/sites-available/default
+sudo sed -i '/^server {/a \\t add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-available/default
 sudo service nginx restart
