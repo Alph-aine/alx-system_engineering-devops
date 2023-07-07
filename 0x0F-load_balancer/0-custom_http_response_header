@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# script to configure NGINX with redirection and custom 404 page and also add a custom rsponse header to nginx config
+
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 'Nginx HTTP'
+echo 'Hello World!' | sudo tee /var/www/html/index.nginx-debian.html
+
+sudo sed -i '/listen 80 default_server/a  rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;' /etc/nginx/sites-available    /default
+
+# Set custom 404 page
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+sudo sed -i '/^server {/a error_page 404 /404.html;' /etc/nginx/sites-available/default
+
+# add custom header
+sudo sed -i '54 a \\t add_header X-served-by $HOSTNAME;' /etc/nginx/sites-available/default
+sudo service nginx restart
