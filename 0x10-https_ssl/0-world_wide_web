@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# this script displays information about the subdomains of a website
+# Usage: ./0-world_wide_web <domain> <sundomain>
+
+get_domain_info () {
+  info=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+  echo "$2 $info" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+}
+
+if [ $# -eq 2 ]; then 
+  get_domain_info "$1" "$2"
+else
+  get_domain_info "$1" "www"
+  get_domain_info "$1" "lb-01"
+  get_domain_info "$1" "web-01"
+  get_domain_info "$1" "web-02"
+fi
