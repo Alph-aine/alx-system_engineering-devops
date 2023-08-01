@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# creates a mysqldump of all databases and compresses it into an archive
+
+password="$1"
+today=$(date +'%d-%m-%Y')
+
+# creates the dump file
+mysqldump -u root -p"$password" --all-databases > backup.sql
+
+# compresses the file 
+tar -czvf "$today.tar.gz" backup.sql
