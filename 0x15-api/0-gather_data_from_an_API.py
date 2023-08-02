@@ -18,6 +18,6 @@ def get_employee_todo_status(userId):
         print("\t {}".format(c))
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     userId = sys.argv[1]
     get_employee_todo_status(userId)
