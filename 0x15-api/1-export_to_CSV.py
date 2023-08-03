@@ -12,7 +12,7 @@ def export_employee_todo_status_to_csv(userId):
     url = "https://jsonplaceholder.typicode.com/"
     todos = requests.get(url + "todos", params={"userId": userId}).json()
     user = requests.get(url + f"users/{userId}").json()
-    name = user.get("name")
+    name = user.get("username")
 
     with open(f'{userId}.csv', "w", newline='') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
