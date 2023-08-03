@@ -12,7 +12,7 @@ def get_employee_todo_status(userId):
 
     name = user.get("name")
     completed = [t.get("title") for t in todos if t.get("completed") is True]
-    print("Employee {} is done with tasks ({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         name, len(completed), len(todos)))
     for c in completed:
         print("\t {}".format(c))
