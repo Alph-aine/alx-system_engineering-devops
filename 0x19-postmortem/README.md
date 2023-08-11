@@ -1,3 +1,8 @@
+<p align="center">
+<img src=""width=auto height=auto/>
+</p>
+
+
 ## Postmortem: Server Breakdown due to Prolonged Garbage Cleanup Neglect
 Date: 9th August, 2023
 
