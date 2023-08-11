@@ -1,5 +1,5 @@
 <p align="center">
-<img src=""width=auto height=auto/>
+<img src="https://github.com/Alph-aine/alx-system_engineering-devops/blob/main/0x19-postmortem/server_failure.jpeg?raw=true" width=auto height=auto/>
 </p>
 
 
