@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 # script to set a redirect for /redirect_me
 
 sudo apt-get -y update
