@@ -1,6 +1,7 @@
-# Fix Nginx  message when simulting user requests
+# solve nginx problem
 
-exec {'modify max open files limit setting':
-  provider => shell
-  command  => 'sed -i "s/15/10000/" /etc/default/nginx && sudo service nginx restart'
+exec {'fd':
+path     => ['/usr/bin', '/bin'],
+command  => "sudo -S sed -i 's/15/3000/g' /etc/default/nginx; sudo service nginx restart",
+provider => 'shell',
 }
