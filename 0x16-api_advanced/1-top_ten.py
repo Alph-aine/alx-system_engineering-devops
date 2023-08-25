@@ -13,11 +13,7 @@ def top_ten(subreddit):
         print(None)
         return None
 
-    try:
-        response = request.json()
-    except ValueError:
-        print(None)
-        return None
+    response = request.json()
 
     data = response.get('data')
     children = data.get('children')
