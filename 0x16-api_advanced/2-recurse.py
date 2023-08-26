@@ -12,8 +12,6 @@ def recurse(subreddit, hot_list=[], after=''):
     Returns a list containing all hot articles of a sunreddit.
     Returns None  if no result is found
     '''
-    if after is None:
-        return hot_list
     url = REDDIT + f'r/{subreddit}/hot.json/'
 
     params = {
@@ -41,4 +39,6 @@ def recurse(subreddit, hot_list=[], after=''):
     except (KeyError, TypeError, AttributeError):
         return None
 
+    if after is None:
+        return hot_list
     return (recurse(subreddit, hot_list, after))
