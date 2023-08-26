@@ -14,7 +14,7 @@ def recurse(subreddit, hot_list=[], after=''):
     '''
     if after is None:
         return hot_list
-    url = REDDIT + f'r/{subreddit}/hot.json/'
+    url = REDDIT + f'r/{subreddit}/hot/.json/'
 
     params = {
             'limit': 100,
