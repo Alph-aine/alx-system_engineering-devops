@@ -1,22 +1,24 @@
 #!/usr/bin/python3
 """ Get top ten hot posts of a subreddit"""
-from requests import get
+
+import requests
 
 
 def top_ten(subreddit):
-    '''requests data from reddit api'''
-    url = 'https://www.reddit.com/r/{subreddit}/hot/.json?limit=10'
-    headers = {'User-Agent': 'my-app/0.0.1'}
+    """
+    Function that queries the Reddit API
+    - If not a valid subreddit, print None.
+    """
+    req = requests.get(
+        "https://www.reddit.com/r/{}/hot.json".format(subreddit),
+        headers={"User-Agent": "Custom"},
+        params={"limit": 10},
+    )
 
-    request = get(url, headers=headers, allow_redirects=False)
-    if request.status_code != 200:
+    if req.status_code == 200:
+        for get_data in req.json().get("data").get("children"):
+            dat = get_data.get("data")
+            title = dat.get("title")
+            print(title)
+    else:
         print(None)
-        return None
-
-    response = request.json()
-
-    data = response.get('data')
-    children = data.get('children')
-    for child in children:
-        post = child.get('data')
-        print(post.get('title'))
