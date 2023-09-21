@@ -1,43 +1,37 @@
 #!/usr/bin/python3
-"""Get all hot articels of a subreddit"""
-from requests import get
+"""
+Recursive function that queries the Reddit API and returns
+a list containing the titles of all hot articles for a given subreddit.
+If no results are found for the given subreddit,
+the function should return None.
+"""
 
-REDDIT = 'https://www.reddit.com/'
-HEADERS = {'User-Agent': 'my-app/0.0.1'}
+import requests
 
 
-def recurse(subreddit, hot_list=None, after=''):
+def recurse(subreddit, hot_list=[], after=""):
     """
-    Returns a list containing all hot article titles of a subreddit.
-    Returns None if no results are found.
+    Queries the Reddit API and returns
+    a list containing the titles of all hot articles for a given subreddit.
+
+    - If not a valid subreddit, return None.
     """
-    if hot_list is None:
-        hot_list = []
+    req = requests.get(
+        "https://www.reddit.com/r/{}/hot.json".format(subreddit),
+        headers={"User-Agent": "Custom"},
+        params={"after": after},
+    )
 
-    if after is None:
-        return hot_list
+    if req.status_code == 200:
+        for get_data in req.json().get("data").get("children"):
+            dat = get_data.get("data")
+            title = dat.get("title")
+            hot_list.append(title)
+        after = req.json().get("data").get("after")
 
-    url = REDDIT + f'r/{subreddit}/hot/.json/'
-
-    params = {
-        'limit': 100,
-        'after': after,
-    }
-
-    response = get(url, headers=HEADERS, params=params, allow_redirects=False)
-    if response.status_code != 200:
+        if after is None:
+            return hot_list
+        else:
+            return recurse(subreddit, hot_list, after)
+    else:
         return None
-
-    try:
-        data = response.json().get('data')
-        after = data.get('after')
-        children = data.get('children')
-
-        for child in children:
-            post = child.get('data')
-            hot_list.append(post.get('title'))
-
-    except (KeyError, AttributeError, TypeError):
-        return None
-
-    return recurse(subreddit, hot_list, after)
