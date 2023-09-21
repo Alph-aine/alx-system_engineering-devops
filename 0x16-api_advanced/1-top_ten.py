@@ -17,6 +17,6 @@ def top_ten(subreddit):
 
     data = response.get('data')
     children = data.get('children')
-    for child in children[:10]:
+    for child in children:
         post = child.get('data')
         print(post.get('title'))
